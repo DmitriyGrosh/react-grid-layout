@@ -100,6 +100,8 @@ type Props = {
   resizeHandles?: ResizeHandleAxis[],
   resizeHandle?: ResizeHandle,
 
+  lockAspectRatio?: boolean;
+
   onDrag?: GridItemCallback<GridDragEvent>,
   onDragStart?: GridItemCallback<GridDragEvent>,
   onDragStop?: GridItemCallback<GridDragEvent>,
@@ -197,6 +199,7 @@ export default class GridItem extends React.Component<Props, State> {
 
     // Others
     className: PropTypes.string,
+    lockAspectRatio: PropTypes.bool,
     // Selector for draggable handle
     handle: PropTypes.string,
     // Selector for draggable cancel (see react-draggable)
@@ -431,6 +434,7 @@ export default class GridItem extends React.Component<Props, State> {
         transformScale={transformScale}
         resizeHandles={resizeHandles}
         handle={resizeHandle}
+        lockAspectRatio={this.props.lockAspectRatio ?? false}
       >
         {child}
       </Resizable>

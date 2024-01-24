@@ -96,6 +96,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     isDraggable: true,
     isResizable: true,
     allowOverlap: false,
+    lockAspectRatio: false,
     isDroppable: false,
     useCSSTransforms: true,
     transformScale: 1,
@@ -555,7 +556,8 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       rowHeight,
       maxRows,
       useCSSTransforms,
-      transformScale
+      transformScale,
+      lockAspectRatio
     } = this.props;
 
     // {...this.state.activeDrag} is pretty slow, actually
@@ -580,6 +582,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
         isBounded={false}
         useCSSTransforms={useCSSTransforms}
         transformScale={transformScale}
+        lockAspectRatio={lockAspectRatio}
       >
         <div />
       </GridItem>
@@ -613,7 +616,8 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       draggableCancel,
       draggableHandle,
       resizeHandles,
-      resizeHandle
+      resizeHandle,
+      lockAspectRatio
     } = this.props;
     const { mounted, droppingPosition } = this.state;
 
@@ -668,6 +672,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
         droppingPosition={isDroppingItem ? droppingPosition : undefined}
         resizeHandles={resizeHandlesOptions}
         resizeHandle={resizeHandle}
+        lockAspectRatio={lockAspectRatio}
       >
         {child}
       </GridItem>
